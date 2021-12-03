@@ -34,13 +34,13 @@ function KRPCurrent(newdata1) {
     ];
 
     console.log(myVagons)
-    for (let i = 0; i < 3; ++i) {
+    for (let i = 0; i < 5; ++i) {
       data.push({
         key: i,
-        id: myVagons[i][i].id,
-        defect: myVagons[i][i].defect + ' %',
-        photoIn: myVagons[i][i].photoIn,
-        photoOut: myVagons[i][i].photoOut,
+        id: myVagons[0][i].id,
+        defect: myVagons[0][i].defect + ' %',
+        photoIn: myVagons[0][i].photoIn,
+        photoOut: myVagons[0][i].photoOut,
       });
       console.log(data)
     }
