@@ -1,0 +1,27 @@
+{
+  "id":1,
+  "dateIn": "03.12.2021 14:00",
+  "dateOut": "03.12.2021 14:00",
+  "count": 3,
+  "type": "coal",
+  "vagons": [
+    {
+      "id": 7,
+      "defect": 1,
+      "photoIn": "1.jpg",
+      "photoOut": "2.jpg"
+    },
+        {
+      "id": 8,
+      "defect": 2,
+      "photoIn": "1.jpg",
+      "photoOut": "2.jpg" 
+    },  
+        {
+      "id": 9,
+      "defect": 3,
+      "photoIn": "1.jpg",
+      "photoOut": "3.jpg" 
+    }
+  ]
+}
