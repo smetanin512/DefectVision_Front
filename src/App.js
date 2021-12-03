@@ -1,94 +1,89 @@
-import React, { Component } from 'react'
-import './App.css';
+import React, { Component, useState } from 'react'
+import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import socketIOClient from "socket.io-client"
+import socketIOClient from 'socket.io-client'
 import MainContainer from './components/container/index'
-import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import 'antd/dist/antd.css' // or 'antd/dist/antd.less'
+import { Form, Input, Button, Checkbox } from 'antd'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      endpoint: "localhost:4000",
-    }
-    this.socket = socketIOClient(this.state.endpoint);
-  };
+function App() {
+  const [isLogined, setIsLogined] = useState(false)
 
-  componentDidMount(){
-    this.socket.on('newdata', (data) => {
-      console.log(data)
-    })
-  }
-  makeRequest = () => {
-    this.socket.emit('script1')
-    console.log('emit')
+  const onFinish = (values) => {
+    console.log('Success:', values)
+    setIsLogined(!isLogined)
   }
 
-  render() {
-    return (
-      <MainContainer />
-    // <div className="App">
+  return (
+    <div>
+      {isLogined && <MainContainer />}
 
-    //   <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+      {!isLogined && (
+        <div className="login-form auth-layout ">
+          <Form
+            name="basic"
+            labelCol={{
+              span: 8,
+            }}
+            wrapperCol={{
+              span: 16,
+            }}
+            initialValues={{
+              remember: true,
+            }}
+            onFinish={onFinish}
+            autoComplete="off"
+          >
+            <Form.Item
+              label="Username"
+              name="username"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your username!',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-    //   <div class="color1 me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-    //     <div class="my-3 py-3">
-    //       <h2 class="display-5">Функция 1</h2>
-    //       <p class="lead">Функция 1 запускает олололо</p>
-    //       <button type="button" onClick={this.makeRequest} class="btn btn-primary btn-lg">Включить</button>
-    //     </div>
-    //   </div>
-    //   <div class="color2 me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-    //     <div class="my-3 p-3">
-    //       <h2 class="display-5">Функция 2</h2>
-    //       <p class="lead">Функция 2 запускает олололо</p>
-    //       <button type="button" class="btn btn-primary btn-lg">Запустить</button>
-    //     </div>
-    //   </div>
-  
-    // </div>
-  
-    // <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-  
-    //   <div class="color3 me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-    //     <div class="my-3 p-3">
-    //       <h2 class="display-5">Функция 3</h2>
-    //       <p class="lead">Функция 3 запускает олололо</p>
-    //       <button type="button" class="btn btn-primary btn-lg">Включить</button>
-    //     </div>
-    //   </div>
-    //   <div class="color4 me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-    //     <div class="my-3 py-3">
-    //       <h2 class="display-5">Функция 4</h2>
-    //       <p class="lead">Функция 4 запускает олололо</p>
-    //       <button type="button" class="btn btn-primary btn-lg">Запустить</button>
-    //     </div>
-    //   </div>
-  
-    // </div>
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your password!',
+                },
+              ]}
+            >
+              <Input.Password />
+            </Form.Item>
 
-    // <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-  
-    //   <div class="color5 me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-    //     <div class="my-3 p-3">
-    //       <h2 class="display-5">Функция 5</h2>
-    //       <p class="lead">Функция 5 запускает олололо</p>
-    //       <button type="button" class="btn btn-primary btn-lg">Включить</button>
-    //     </div>
-    //   </div>
-    //   <div class="color6 me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-    //     <div class="my-3 py-3">
-    //       <h2 class="display-5">Функция 6</h2>
-    //       <p class="lead">Функция 6 запускает олололо</p>
-    //       <button type="button" class="btn btn-primary btn-lg">Запустить</button>
-    //     </div>
-    //   </div>
-  
-    // </div>
+            <Form.Item
+              name="remember"
+              valuePropName="checked"
+              wrapperCol={{
+                offset: 8,
+                span: 16,
+              }}
+            ></Form.Item>
 
-    // </div>
-  );
-  }
+            <Form.Item
+              wrapperCol={{
+                offset: 8,
+                span: 16,
+              }}
+            >
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
+      )}
+    </div>
+  )
 }
 
-export default App;
+export default App
