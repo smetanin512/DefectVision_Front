@@ -1,25 +1,37 @@
 {
   "id":1,
   "dateIn": "03.12.2021 10:00",
-  "dateOut": "03.12.2021 10:00",
+  "dateOut": "03.12.2021 11:00",
   "count": 3,
-  "type": "coal",
+  "type": "Гречка",
   "vagons": [
     {
       "id": 1,
-      "defect": 1,
+      "defect": 15,
       "photoIn": "1.png",
       "photoOut": "2.png"
     },
         {
       "id": 2,
-      "defect": 2,
+      "defect": 20,
       "photoIn": "3.png",
       "photoOut": "4.png" 
     },  
-        {
+    {
       "id": 3,
-      "defect": 3,
+      "defect": 13,
+      "photoIn": "1.jpg",
+      "photoOut": "3.jpg" 
+    },
+    {
+      "id": 4,
+      "defect": 15,
+      "photoIn": "1.jpg",
+      "photoOut": "3.jpg" 
+    },
+     {
+      "id": 5,
+      "defect": 13,
       "photoIn": "1.jpg",
       "photoOut": "3.jpg" 
     }

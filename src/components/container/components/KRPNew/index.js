@@ -38,7 +38,7 @@ function KRPNew(newdata1) {
       data.push({
         key: i,
         id: myVagons[i][i].id,
-        defect: myVagons[i][i].defect,
+        defect: myVagons[i][i].defect + ' %',
         photoIn: myVagons[i][i].photoIn,
         photoOut: myVagons[i][i].photoOut,
       });
